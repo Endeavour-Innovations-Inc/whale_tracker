@@ -15,7 +15,6 @@ const playSound = () => {
   player.play('ding.mp3', function(err){
     if (err) throw err
   })
-
 }
 
 const main = async () => {
