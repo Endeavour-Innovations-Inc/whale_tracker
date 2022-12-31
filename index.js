@@ -33,7 +33,10 @@ const contract = new Contract(CONTRACT_ADDRESS, CONTRACT_ABI ,provider)
 // Note: No decimal places in smart contract
 // example: 100.00$ == 10000 cents, and we need to use cents
 // so 14 zeros after 4 decimal places and the rest of the full numbers
-const TRANSFER_THRESHOLD = 100000000000000000000000 // 100,000 USDC (in wei)
+// const TRANSFER_THRESHOLD = 1 Billion Tonic (100000000000) + 18 decimal zeros (000000000000000000)
+// you can change the threshhold to adjust the amount for the transaction tracker
+// Note: the higher the transfer threshold, the more rare the transactions would be
+const TRANSFER_THRESHOLD = 1000000000000000000000000 // 1 Million Tonic + 18 decimal zeros currently
 
 
 // function to run the app
@@ -56,7 +59,8 @@ main = async () => {
         // transferred amount transaction
         // higher or equal to the threshhold
         // is displayed on the console
-        if (amount >= TRANSFER_THRESHOLD ) {
+        // console.log("from:" + from)
+        if(amount >= TRANSFER_THRESHOLD) {
             // prints name of the whale wallet and transaction id
             // data can be used to extract transaction hash and
             // other data associated with the transaction
